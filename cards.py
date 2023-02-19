@@ -123,7 +123,9 @@ Wie 3. Normalform, aber kein Teil eines Kandidatenschlüssels ist funktional von
 3. Entferne 𝑅𝑖 aus 𝑍 und füge 𝑅𝑖1 und 𝑅𝑖2 ein, also 𝑍𝑛𝑒𝑢 = 𝑍𝑎𝑙𝑡 ∖ ℛ𝑖 ∪ 𝑅𝑖1 ∪ 𝑅𝑖2\n4. go to 1""", #"Dekompositionsalgorithmus (Boyce-Codd-Normalform & 4. NF)"
 """Schema ist in 4NF, wenn jede MVD α->>β mindestens eine der folgenden Bedingungen erfüllt:\n    α->>β ist trivial (β⊆α oder α∪β = R)\n    α ist Superschlüssel
 --> Alle MVDs 𝛼 → 𝛽 müssen entweder trivial sein oder 𝛼 ein Superschlüssel""", #"4. Normalform"
-"CPU-Register < Cache < Hauptspeicher < Plattenspeicher < Archivspeicher", #"Speicherhierachie"
+"""CPU-Register < Cache     < Hauptspeicher < Plattenspeicher < Archivspeicher\n
+   1Byte          KB -> MB    GB -> TB        TB                viele TB\n
+   1-10 ns        10 - 100 ns 10 - 1000ns     10ms              Sek - min""", #"Speicherhierachie"
 """RAID 0      Striping                            Datenblöcke in Reiehe gespeichert\n
 RAID 1      Mirroring                           Daten gespiegelt/kopiert\n
 RAID 2      Hamming-Code (Fehlererkennung)      Datenbytes + HC verteilt auf angehängten Platten\n
