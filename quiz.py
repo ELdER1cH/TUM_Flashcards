@@ -29,8 +29,10 @@ while(inp != "1" and inp != "2"):
         inp = input("Please enter a valid number: \n")
 
 while 1:
-
+    #Get Question
     index = random.randrange(len(questions))
+    
+    
     if not used_indices.__contains__(index):
         used_indices.insert(index, index)
     elif len(used_indices) == len(questions):
@@ -44,7 +46,7 @@ while 1:
     else:
         continue
     
-    inp = input("Press ENTER for a question or q to exit: \n")
+    inp = input("Press ENTER for the next question\n")
     if(inp == "q"):
         break
     counter += 1
