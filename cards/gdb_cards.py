@@ -66,7 +66,7 @@ answers = [
 "„is-a“-Beziehung Attribute werden von Ober- an Untertyp weitergegeben -> Wie Vererbung bei objektorientierter Programmierung", #"Generalisierung"
 "Ist-Teil-von“-Beziehung", #"Aggregation"
 "Entities:\n\t◦ Jede Entity wird zur Relation\n\t◦ Entity-Attribute -> Attribute der Relation\n\t◦ Schlüssel bleibt erhalten\n"
-"Beziehunhgen\n\t◦ Jede Beziehung wird Relation (Vorsicht: Oft Möglichkeit, zu optimieren)\n\t◦ Attribute werden übernommen\n\t◦ Schlüssel setzt sich abhängig von den Funktionalitäten aus denen der beteiligten Entities zusammen\n" #"ER -> Relationales Schema"
+"Beziehunhgen\n\t◦ Jede Beziehung wird Relation (Vorsicht: Oft Möglichkeit, zu optimieren)\n\t◦ Attribute werden übernommen\n\t◦ Schlüssel setzt sich abhängig von den Funktionalitäten aus denen der beteiligten Entities zusammen\n", #"ER -> Relationales Schema"
 "1:N-Beziehungen\n\t◦ Beziehungsrelation weglassen\n\t◦ In „N-Entity” Attribute der Beziehung, Fremdschlüssel von „1-Entity“ einfügen\n"
 "1:1-Beziehungen\n\t◦ Beziehungsrelation und eine der Entities weglassen\n\t◦ Attribute der Entity und der Beziehung alle in verbleibende Entity übernehmen", #"Relationales Schema optimieren"
 "Filtert Einträge einer Relation anhand einer bestimmten Eigenschaft (Eigenschaften sind vergleichend: <, >, =, …)", #"Relationale Algebra - Operatoren: Selektion σ"
