@@ -198,7 +198,7 @@ while 1:
     else:
         continue
     
-    inp = input("Press ENTER for a question: \n")
+    inp = input("Press ENTER for a question or q to exit: \n")
     if(inp == "q"):
         break
     counter += 1
