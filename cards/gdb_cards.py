@@ -212,7 +212,7 @@ SQL_Answers = [
                 "(SELECT Name FROM Assistenten) UNION (SELECT Name FROM Professoren) \n" + 
                 "weitere: INTERSECT, MINUS", #Vereinigung
         "SELECT Spalte1, Spalte2, ... FROM Tabelle1 EXIST (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" + 
-                "SELECT Name FROM Professoren p WHERE NOT EXISTS (select * FROM  Vorlesungen v WHERE v.gelesenVon = p.persNr) -Alle Professoren die keine Vorlesung halten", #Existiert
+                "SELECT Name FROM Professoren p WHERE NOT EXISTS (select * FROM  Vorlesungen v WHERE v.gelesenVon = p.persNr) \n-Alle Professoren die keine Vorlesung halten", #Existiert
         "SELECT Spalte1, Spalte2, ... FROM Tabelle1 GROUP BY Spalte1, Spalte2, ...\n" + 
                 "SELECT Name FROM Professoren GROUP BY Rang ", #Gruppieren
         "SELECT avg(Spalte1), sum(Spalte2), count(Spalte3), max(Spalte4), min(Spalte5) FROM Tabelle \n" + 
@@ -221,7 +221,9 @@ SQL_Answers = [
         "SELECT * FROM prüfen WHERE Note < (select avg(Note) FROM prüfen) \n" + 
                 "SELECT Name, (SELECT sum(SWS) as Lehrsumme FROM Vorlesungen WHERE gelesenVon = PersNr) FROM Professoren", #Schachtelungen
         "SELECT CAST(Spalte1 AS Datentyp) FROM Tabelle\n" + 
-                "", #Casting
+                "SELECT h.vorlNr, h.anzProVorl, g.gesamtAnz, \n" + 
+                "\t CAST(h.anzahlProVorlesung AS DECIMAL(6,2))/ g.gesamtAnz AS Markanteil \n" + 
+                "FROM (select VorlesungNr, count(*) as anzProVorl \n\t FROM hören \n\t GROUP BY VorlNr) h, \n\t (SELECT count(*) AS gesamtAnz FROM Studenten) g\n Gibt die Anteile der Studenten auf die Vorlesungen aus", #Casting
 
 ]
 
