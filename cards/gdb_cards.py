@@ -31,7 +31,7 @@ questions = ["SQL",
 "Funktionale Abhängigkeit (Funktional Dependency FD)",
 "Armstrong-Axiome",
 "Schlüssel",
-"Schlüsselbestimmung"
+"Schlüsselbestimmung",
 "Attributhülle",
 "Kanonische Überdeckung",
 "𝐹𝐶 - Berechnung",
@@ -48,7 +48,7 @@ questions = ["SQL",
 "Logische Optimierungen",
 "Iteratoren zur physischen Optimierung",
 "Transaktionsverwaltung - Operationen",
-"ACID"
+"ACID",
 "Fehlerklassifikation",
 "Speicherhierachie - Steal and Force",
 "ARIES-Protokoll (Log)",
@@ -174,5 +174,54 @@ Wenn die Tupel (𝛼1, 𝛽1, 𝛾1) und 𝛼1, 𝛽2, 𝛾2 in der Relation �
 ◦ Wenn nur ein einziger 𝛽-Wert zu jedem 𝛼 vorkommt, gibt es nichts zu tauschen ⟹ die Bedingung ist automatisch erfüllt\nWenn 𝛼 ↠ 𝛽 gilt, dann auch immer 𝛼 ↠ ℛ ∖ (𝛼 ∪ 𝛽)\n\t
 ◦ Wenn die 𝛽-Werte sich beliebig mit den 𝛾-Werten kombinieren lassen, dann auch andersherum\nEine MVD ist trivial wenn eine der folgenden beiden Bedingungen erfüllt ist:\n\t
 ◦ 𝛽 ⊆ 𝛼 (dann gilt automatisch auch 𝛼 → 𝛽 und damit 𝛼 ↠ 𝛽)\n\t◦ 𝛽 = 𝑅 − 𝛼 (In diesem Fall wäre 𝛾 = ∅, damit auch 𝛾1 = 𝛾2 = ∅, was die Bedingung der MVDs \n""", #"Mehrwertige Abhängigkeiten (multivalued dependencies - MVDs)"
+]
+
+
+SQL_Questions = [
+        "Einfügen",
+        "Löschen",
+        "Ändern",
+        "Abfragen",
+        "Sortieren",
+        "No Duplicates",
+        "Anfragen auf mehreren Tabellen",
+        "Vereinigung",
+        "Existiert",
+        "Gruppieren",
+        "avg() sum() count() max() min()",
+        "Schachtelungen",
+        "Casting",
+]
+
+SQL_Answers = [
+        "INSERT INTO Tabelle (Spalte1, Spalte2, ...) VALUES (Wert1, Wert2, ...)\n" + 
+                "INSERT INTO Studeten(MatrNr, Name) VALUES (28121, 'Archimedes')", #Einfügen
+        "DELETE FROM Tabelle WHERE Bedingung \n" + 
+                "DELETE FROM Studenten WHERE Semester > 13", #Löschen
+        "UPDATE Tabelle SET Spalte1 = Wert1, Spalte2 = Wert2, ... WHERE Bedingung \n" + 
+                "UPDATE Studenten SET Semester = Semester +1", #Ändern
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle WHERE Bedingung\n" + 
+                "SELECT PersNr, Name FROM Professoren where Rang = 'C4'", #Abfragen
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle ORDER BY Spalte1, Spalte2, ... \n" + 
+                "SELECT PersNR, Name FROM Professoren ORDER BY Rang desc, Name asc", #Sortieren
+        "SELECT DISTINCT Spalte1, Spalte2, ... FROM Tabelle \n" + 
+                "SELECT DISTINCT Rang from Professoren", #No Duplicates
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1, Tabelle2, ... WHERE Bedingung\n" + 
+                "SELECT Name, Titel FROM Vorlesungen, Professoren WHERE PersNr = gelesenVon AND Titel = 'Mäutic'", #Anfragen auf mehreren Tabellen
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 UNION SELECT Spalte1, Spalte2, ... FROM Tabelle2\n" + 
+                "(SELECT Name FROM Assistenten) UNION (SELECT Name FROM Professoren) \n" + 
+                "weitere: INTERSECT, MINUS", #Vereinigung
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 EXIST (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" + 
+                "SELECT Name FROM Professoren p WHERE NOT EXISTS (select * FROM  Vorlesungen v WHERE v.gelesenVon = p.persNr) -Alle Professoren die keine Vorlesung halten", #Existiert
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 GROUP BY Spalte1, Spalte2, ...\n" + 
+                "SELECT Name FROM Professoren GROUP BY Rang ", #Gruppieren
+        "SELECT avg(Spalte1), sum(Spalte2), count(Spalte3), max(Spalte4), min(Spalte5) FROM Tabelle \n" + 
+                "SELECT AVG(semester) FROM Studenten\n" + 
+                "SELECT gelesenVon, SUM(SWS) FROM Vorlesungen GROUP BY gelesenVon", #avg() sum() count() max() min()
+        "SELECT * FROM prüfen WHERE Note < (select avg(Note) FROM prüfen) \n" + 
+                "SELECT Name, (SELECT sum(SWS) as Lehrsumme FROM Vorlesungen WHERE gelesenVon = PersNr) FROM Professoren", #Schachtelungen
+        "SELECT CAST(Spalte1 AS Datentyp) FROM Tabelle\n" + 
+                "", #Casting
+
 ]
 
