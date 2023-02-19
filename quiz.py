@@ -26,8 +26,10 @@ used_indices = collections.deque()
 print("Select a deck to study:")
 print("1. gdb")
 print("2. itsec")
+print("3. SQL")
+print("q. Quit")
 inp = -1
-while(inp != "1" and inp != "2" and inp != "q" and inp != "-2"):
+while(inp != "1" and inp != "2" and inp != "q" and inp != "-2" and inp != "3"):
     inp = input("Enter the number of the deck you would like to study: \n")
     if(inp == "1"):
         questions = gdb_cards.questions
@@ -38,6 +40,11 @@ while(inp != "1" and inp != "2" and inp != "q" and inp != "-2"):
         questions = itsec_cards.questions
         answers = itsec_cards.answers
         print("You have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
+        print("There are:",len(questions), "questions in this deck")
+    elif(inp == "3"):
+        questions = gdb_cards.SQL_Questions
+        answers = gdb_cards.SQL_Answers
+        print("You have selected the SQL deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
         print("There are:",len(questions), "questions in this deck")
     elif(inp == "q"):
         break
@@ -69,14 +76,14 @@ while 1:
         break
     counter += 1
     print(f"Question # {counter} of {len(questions)}:\n")
-    print("Question: ", index)
+    # print("Question: ", index)
     print(questions[index])
     print("\n")
     
     inp = input("Press ENTER for the answer: \n")
     if(inp == "q"):
         break
-    print("Answer: ", index)
+    # print("gAnswer: ", index)
     print(answers[index])
     print("\n")
     
