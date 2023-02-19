@@ -2,31 +2,41 @@ import random
 import collections
 import cards.gdb_cards as gdb_cards
 import cards.itsec_cards as itsec_cards
+import cards.gbs_cards as gbs_cards
+
 
 #Used Variables
 index = 0
 counter = 0
 used_indices = collections.deque()
 
+#new decks can easily be added here, and the first while loop will not become cluttered over time
+valid_stacks = [
+"GBS",
+"ITSEC",
+"GDB"
+]
 
-print("Select a deck to study:")
-print("1. gdb")
-print("2. itsec")
-inp = -1
-while(inp != "1" and inp != "2"):
-    inp = input("Enter the number of the deck you would like to study: \n")
-    if(inp == "1"):
+print("Type 'list' to see a list of available cards / input")
+inp = 0
+while(not valid_stacks.__contains__(inp)):
+    inp = input("\nEnter the name of the deck you would like to study (Input is not case sensitive): \n").upper()
+    if (inp == "LIST"):
+        print("\nHere are the available decks:")
+        for i in range (0, len(valid_stacks)):
+            print(valid_stacks[i])
+    elif (inp == "GDB"):
         questions = gdb_cards.questions
         answers = gdb_cards.answers
         print("You have selected the gdb deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
-        print("There are:",len(questions), "questions in this deck")
-    elif(inp == "2"):
+        print("There are ",len(questions), "questions in this deck")
+    elif (inp == "ITSEC"):
         questions = itsec_cards.questions
         answers = itsec_cards.answers
         print("You have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
         print("There are:",len(questions), "questions in this deck")
     else:
-        inp = input("Please enter a valid number: \n")
+        print("Please enter a valid deck name! Try again...")
 
 while 1:
     #Get Question
