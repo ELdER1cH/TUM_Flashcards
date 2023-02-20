@@ -192,7 +192,10 @@ SQL_Questions = [
         "Schachtelungen",
         "Casting",
         "Join",
-        "With"
+        "With",
+        "String Data Types",
+        "Numeric Data Types",
+        "Recursive Queries",
 ]
 
 SQL_Answers = [
@@ -231,7 +234,21 @@ SQL_Answers = [
         "WITH Tabelle1 AS (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" +
                 "WITH Studenten AS (SELECT Name, Semester FROM Studenten WHERE Semester > 13)\n" +
                 "SELECT * FROM Studenten\n"  + 
-                "-Zwischenspeicher von Daten -> Hier wurden alle Studenten mit Semester > 13 zwischengespeichert"#With
-
+                "-Zwischenspeicher von Daten -> Hier wurden alle Studenten mit Semester > 13 zwischengespeichert",#With
+        "CHAR(n) - Zeichenkette mit fester Länge\n" +
+                "VARCHAR(n) - Zeichenkette mit variabler Länge\n" +
+                "TEXT - Zeichenkette mit variabler Länge\n" +
+                "BINARY(n) - Binärdaten mit fester Länge\n", #String Data Types
+        "INTEGER(size) - Ganzzahl\n" +
+                "DECIMAL(size, d) - Gleitkommazahl\n" +
+                "FLOAT(size, d) - Gleitkommazahl\n" +
+                "\tSize = total number of digits\n" +
+                "\td = number of digits after the decimal point\n" +
+                "BOOLEAN - Wahrheitswert\n", #Numeric Data Types
+        "WITH RECURSIVE Tabelle1 AS (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung UNION SELECT Spalte1, Spalte2, ... FROM Tabelle3 WHERE Bedingung)\n" +
+                "WITH RECURSIVE TRansitivVorl (Vorg,Nachf) AS \n\t(SELECT Vorgänger, Nachfolger FROM vorraussetzen \n\tUNION ALL SELECT DISTINCT t.Vorg, v.Nachfolger \n\tFROM vorraussetzen v, TransitivVorl t \n\tWHERE v.Vorgänger = t.Nachf)\n" +
+                "SELECT v2.titel FROM TransitivVorl tv, vorlesungen v1, vorlesungen v2\n" +
+                "WHERE tv.nachf = v1.vorlnr AND tv.vorg = v2.vorlnr AND v1.titel = 'Der Wiener Kreis AND vorg = v2.vorlnr'\n"
+                "ORDER BY (Vorg, Nachf) asc\n" #Recursive Queries
 ]
 
