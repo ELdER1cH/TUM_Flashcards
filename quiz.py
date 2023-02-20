@@ -2,19 +2,7 @@ import random
 import collections
 import cards.gdb_cards as gdb_cards
 import cards.itsec_cards as itsec_cards
-import debug 
-
-def debug():
-    print("Debugging")
-    imp = input("Enter the name of the module you would like to debug: \n")
-    if (imp == "gdb"):
-        for i in range(len(gdb_cards.questions)):
-            print(f"{i=}\n Question: {gdb_cards.questions[i]}\nAnswer: {gdb_cards.answers[i]}\n")
-        return
-    elif(imp == "itsec"):
-        pass
-
-
+import cards.gbs_cards as gbs_cards
 
 
 #Used Variables
@@ -22,36 +10,41 @@ index = 0
 counter = 0
 used_indices = collections.deque()
 
+#new decks can easily be added here, and the first while loop will not become cluttered over time
+valid_stacks = [
+"GBS",
+"ITSEC",
+"GDB",
+"SQL"
+]
 
-print("Select a deck to study:")
-print("1. gdb")
-print("2. itsec")
-print("3. SQL")
-print("q. Quit")
-inp = -1
-while(inp != "1" and inp != "2" and inp != "q" and inp != "-2" and inp != "3"):
-    inp = input("Enter the number of the deck you would like to study: \n")
-    if(inp == "1"):
+print("Type 'list' to see a list of available cards / input")
+inp = 0
+while(not valid_stacks.__contains__(inp)):
+    inp = input("\nEnter the name of the deck you would like to study (Input is not case sensitive): \n").upper()
+    if (inp == "LIST"):
+        print("\nHere are the available decks:")
+        for i in range (0, len(valid_stacks)):
+            print(valid_stacks[i])
+    elif (inp == "GDB"):
         questions = gdb_cards.questions
         answers = gdb_cards.answers
         print("You have selected the gdb deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
-        print("There are:",len(questions), "questions in this deck")
-    elif(inp == "2"):
+        print("There are ",len(questions), "questions in this deck")
+    elif (inp == "ITSEC"):
         questions = itsec_cards.questions
         answers = itsec_cards.answers
         print("You have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
         print("There are:",len(questions), "questions in this deck")
-    elif(inp == "3"):
+    elif(inp == "SQL"):
         questions = gdb_cards.SQL_Questions
         answers = gdb_cards.SQL_Answers
         print("You have selected the SQL deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
         print("There are:",len(questions), "questions in this deck")
     elif(inp == "q"):
         break
-    elif(inp == "-2"):
-        debug()
     else:
-        inp = input("Please enter a valid number: \n")
+        print("Please enter a valid deck name! Try again...")
 
 while 1:
     #Get Question
@@ -86,4 +79,3 @@ while 1:
     # print("gAnswer: ", index)
     print(answers[index])
     print("\n")
-    
