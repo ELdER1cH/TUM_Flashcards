@@ -14,7 +14,8 @@ used_indices = collections.deque()
 valid_stacks = [
 "GBS",
 "ITSEC",
-"GDB"
+"GDB",
+"SQL"
 ]
 
 print("Type 'list' to see a list of available cards / input")
@@ -35,6 +36,13 @@ while(not valid_stacks.__contains__(inp)):
         answers = itsec_cards.answers
         print("You have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
         print("There are:",len(questions), "questions in this deck")
+    elif(inp == "SQL"):
+        questions = gdb_cards.SQL_Questions
+        answers = gdb_cards.SQL_Answers
+        print("You have selected the SQL deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
+        print("There are:",len(questions), "questions in this deck")
+    elif(inp == "q"):
+        break
     else:
         print("Please enter a valid deck name! Try again...")
 
@@ -61,11 +69,13 @@ while 1:
         break
     counter += 1
     print(f"Question # {counter} of {len(questions)}:\n")
+    # print("Question: ", index)
     print(questions[index])
     print("\n")
     
     inp = input("Press ENTER for the answer: \n")
     if(inp == "q"):
         break
+    # print("gAnswer: ", index)
     print(answers[index])
     print("\n")

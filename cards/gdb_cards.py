@@ -27,7 +27,7 @@ questions = ["SQL",
 "Funktionale Abhängigkeit (Funktional Dependency FD)",
 "Armstrong-Axiome",
 "Schlüssel",
-"Schlüsselbestimmung"
+"Schlüsselbestimmung",
 "Attributhülle",
 "Kanonische Überdeckung",
 "𝐹𝐶 - Berechnung",
@@ -44,7 +44,7 @@ questions = ["SQL",
 "Logische Optimierungen",
 "Iteratoren zur physischen Optimierung",
 "Transaktionsverwaltung - Operationen",
-"ACID"
+"ACID",
 "Fehlerklassifikation",
 "Speicherhierachie - Steal and Force",
 "ARIES-Protokoll (Log)",
@@ -170,5 +170,81 @@ Wenn die Tupel (𝛼1, 𝛽1, 𝛾1) und 𝛼1, 𝛽2, 𝛾2 in der Relation �
 ◦ Wenn nur ein einziger 𝛽-Wert zu jedem 𝛼 vorkommt, gibt es nichts zu tauschen ⟹ die Bedingung ist automatisch erfüllt\nWenn 𝛼 ↠ 𝛽 gilt, dann auch immer 𝛼 ↠ ℛ ∖ (𝛼 ∪ 𝛽)\n\t
 ◦ Wenn die 𝛽-Werte sich beliebig mit den 𝛾-Werten kombinieren lassen, dann auch andersherum\nEine MVD ist trivial wenn eine der folgenden beiden Bedingungen erfüllt ist:\n\t
 ◦ 𝛽 ⊆ 𝛼 (dann gilt automatisch auch 𝛼 → 𝛽 und damit 𝛼 ↠ 𝛽)\n\t◦ 𝛽 = 𝑅 − 𝛼 (In diesem Fall wäre 𝛾 = ∅, damit auch 𝛾1 = 𝛾2 = ∅, was die Bedingung der MVDs \n""", #"Mehrwertige Abhängigkeiten (multivalued dependencies - MVDs)"
+]
+
+
+SQL_Questions = [
+        "Einfügen",
+        "Löschen",
+        "Ändern",
+        "Abfragen",
+        "Sortieren",
+        "No Duplicates",
+        "Anfragen auf mehreren Tabellen",
+        "Vereinigung",
+        "Existiert",
+        "Gruppieren",
+        "avg() sum() count() max() min()",
+        "Schachtelungen",
+        "Casting",
+        "Join",
+        "With",
+        "String Data Types",
+        "Numeric Data Types",
+        "Recursive Queries",
+]
+
+SQL_Answers = [
+        "INSERT INTO Tabelle (Spalte1, Spalte2, ...) VALUES (Wert1, Wert2, ...)\n" + 
+                "INSERT INTO Studeten(MatrNr, Name) VALUES (28121, 'Archimedes')", #Einfügen
+        "DELETE FROM Tabelle WHERE Bedingung \n" + 
+                "DELETE FROM Studenten WHERE Semester > 13", #Löschen
+        "UPDATE Tabelle SET Spalte1 = Wert1, Spalte2 = Wert2, ... WHERE Bedingung \n" + 
+                "UPDATE Studenten SET Semester = Semester +1", #Ändern
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle WHERE Bedingung\n" + 
+                "SELECT PersNr, Name FROM Professoren where Rang = 'C4'", #Abfragen
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle ORDER BY Spalte1, Spalte2, ... \n" + 
+                "SELECT PersNR, Name FROM Professoren ORDER BY Rang desc, Name asc", #Sortieren
+        "SELECT DISTINCT Spalte1, Spalte2, ... FROM Tabelle \n" + 
+                "SELECT DISTINCT Rang from Professoren", #No Duplicates
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1, Tabelle2, ... WHERE Bedingung\n" + 
+                "SELECT Name, Titel FROM Vorlesungen, Professoren WHERE PersNr = gelesenVon AND Titel = 'Mäutic'", #Anfragen auf mehreren Tabellen
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 UNION SELECT Spalte1, Spalte2, ... FROM Tabelle2\n" + 
+                "(SELECT Name FROM Assistenten) UNION (SELECT Name FROM Professoren) \n" + 
+                "weitere: INTERSECT, MINUS", #Vereinigung
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 EXIST (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" + 
+                "SELECT Name FROM Professoren p WHERE NOT EXISTS (select * FROM  Vorlesungen v WHERE v.gelesenVon = p.persNr) \n-Alle Professoren die keine Vorlesung halten", #Existiert
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 GROUP BY Spalte1, Spalte2, ...\n" + 
+                "SELECT Name FROM Professoren GROUP BY Rang ", #Gruppieren
+        "SELECT avg(Spalte1), sum(Spalte2), count(Spalte3), max(Spalte4), min(Spalte5) FROM Tabelle \n" + 
+                "SELECT AVG(semester) FROM Studenten\n" + 
+                "SELECT gelesenVon, SUM(SWS) FROM Vorlesungen GROUP BY gelesenVon", #avg() sum() count() max() min()
+        "SELECT * FROM prüfen WHERE Note < (select avg(Note) FROM prüfen) \n" + 
+                "SELECT Name, (SELECT sum(SWS) as Lehrsumme FROM Vorlesungen WHERE gelesenVon = PersNr) FROM Professoren", #Schachtelungen
+        "SELECT CAST(Spalte1 AS Datentyp) FROM Tabelle\n" + 
+                "SELECT h.vorlNr, h.anzProVorl, g.gesamtAnz, \n" + 
+                "\t CAST(h.anzahlProVorlesung AS DECIMAL(6,2))/ g.gesamtAnz AS Markanteil \n" + 
+                "FROM (select VorlesungNr, count(*) as anzProVorl \n\t FROM hören \n\t GROUP BY VorlNr) h, \n\t (SELECT count(*) AS gesamtAnz FROM Studenten) g\n Gibt die Anteile der Studenten auf die Vorlesungen aus", #Casting
+        "SELECT Spalte1, Spalte2, ... FROM Tabelle1 JOIN Tabelle2 ON Bedingung\n" +
+                "SELECT VorlNr, Name, Titel FROM Vorlesungen JOIN Professoren ON gelesenVon = PersNr\n" #Join
+        "WITH Tabelle1 AS (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" +
+                "WITH Studenten AS (SELECT Name, Semester FROM Studenten WHERE Semester > 13)\n" +
+                "SELECT * FROM Studenten\n"  + 
+                "-Zwischenspeicher von Daten -> Hier wurden alle Studenten mit Semester > 13 zwischengespeichert",#With
+        "CHAR(n) - Zeichenkette mit fester Länge\n" +
+                "VARCHAR(n) - Zeichenkette mit variabler Länge\n" +
+                "TEXT - Zeichenkette mit variabler Länge\n" +
+                "BINARY(n) - Binärdaten mit fester Länge\n", #String Data Types
+        "INTEGER(size) - Ganzzahl\n" +
+                "DECIMAL(size, d) - Gleitkommazahl\n" +
+                "FLOAT(size, d) - Gleitkommazahl\n" +
+                "\tSize = total number of digits\n" +
+                "\td = number of digits after the decimal point\n" +
+                "BOOLEAN - Wahrheitswert\n", #Numeric Data Types
+        "WITH RECURSIVE Tabelle1 AS (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung UNION SELECT Spalte1, Spalte2, ... FROM Tabelle3 WHERE Bedingung)\n" +
+                "WITH RECURSIVE TRansitivVorl (Vorg,Nachf) AS \n\t(SELECT Vorgänger, Nachfolger FROM vorraussetzen \n\tUNION ALL SELECT DISTINCT t.Vorg, v.Nachfolger \n\tFROM vorraussetzen v, TransitivVorl t \n\tWHERE v.Vorgänger = t.Nachf)\n" +
+                "SELECT v2.titel FROM TransitivVorl tv, vorlesungen v1, vorlesungen v2\n" +
+                "WHERE tv.nachf = v1.vorlnr AND tv.vorg = v2.vorlnr AND v1.titel = 'Der Wiener Kreis AND vorg = v2.vorlnr'\n"
+                "ORDER BY (Vorg, Nachf) asc\n" #Recursive Queries
 ]
 
