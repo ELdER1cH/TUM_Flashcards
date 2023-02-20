@@ -226,7 +226,7 @@ SQL_Answers = [
                 "\t CAST(h.anzahlProVorlesung AS DECIMAL(6,2))/ g.gesamtAnz AS Markanteil \n" + 
                 "FROM (select VorlesungNr, count(*) as anzProVorl \n\t FROM hören \n\t GROUP BY VorlNr) h, \n\t (SELECT count(*) AS gesamtAnz FROM Studenten) g\n Gibt die Anteile der Studenten auf die Vorlesungen aus", #Casting
         "SELECT Spalte1, Spalte2, ... FROM Tabelle1 JOIN Tabelle2 ON Bedingung\n" +
-                "SELECT VorlNr, Name, Titel FROM Vorlesungen JOIN Professoren ON gelesenVon = PersNr\n" #Join
+                "SELECT VorlNr, Name, Titel FROM Vorlesungen JOIN Professoren ON gelesenVon = PersNr\n", #Join
         "WITH Tabelle1 AS (SELECT Spalte1, Spalte2, ... FROM Tabelle2 WHERE Bedingung)\n" +
                 "WITH Studenten AS (SELECT Name, Semester FROM Studenten WHERE Semester > 13)\n" +
                 "SELECT * FROM Studenten\n"  + 
