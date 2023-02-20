@@ -1,7 +1,3 @@
-import random
-import collections
-
-
 questions = ["SQL",
 "Primärschlüssel",
 "Fremdschlüssel",

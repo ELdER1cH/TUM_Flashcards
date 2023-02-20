@@ -1,6 +1,3 @@
-import random
-import collections
-
 questions = [
 "Varianten von XSS Angriffen",
 "Was sind die 6 Angriffsklassen?",
