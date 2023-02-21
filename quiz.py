@@ -29,18 +29,23 @@ while(not valid_stacks.__contains__(inp)):
     elif (inp == "GDB"):
         questions = gdb_cards.questions
         answers = gdb_cards.answers
-        print("You have selected the gdb deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
-        print("There are ",len(questions), "questions in this deck")
+        print("\nYou have selected the gdb deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are ",len(questions), "questions in this deck\n")
     elif (inp == "ITSEC"):
         questions = itsec_cards.questions
         answers = itsec_cards.answers
-        print("You have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
-        print("There are:",len(questions), "questions in this deck")
+        print("\nYou have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are:",len(questions), "questions in this deck\n")
     elif(inp == "SQL"):
         questions = gdb_cards.SQL_Questions
         answers = gdb_cards.SQL_Answers
-        print("You have selected the SQL deck. Press ENTER to start the quiz. Press \"q\" to exit at any time\n\n")
-        print("There are:",len(questions), "questions in this deck")
+        print("\nYou have selected the SQL deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are:",len(questions), "questions in this deck\n")
+    elif(inp == "GBS"):
+        questions  = gbs_cards.questions
+        answers = gbs_cards.answers
+        print("\nYou have selected the GBS deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are:",len(questions), "questions in this deck\n")
     elif(inp == "q"):
         break
     else:
