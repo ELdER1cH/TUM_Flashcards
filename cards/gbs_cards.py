@@ -69,6 +69,11 @@ questions_scheduling = [
     "Scheduling Strategien in Batch Systemen",
     "Scheduling Strategien in interaktiven Systemen",
     "Scheduling Strategien in Echtzeit Systemen",
+    "Multilevel Scheduling",
+    "Varianten bei Multicore Scheduling",
+    "Globale Warteschlange",
+    "Eine Warteschlange pro Prozessor",
+    "Hybride Herangehensweise für Wareschlangen",
 ]
 
 answers_scheduling = [
@@ -132,8 +137,47 @@ answers_scheduling = [
     "Earliest-Deadline-First: \n" +
         "\t - Prozesse mit der nächsten Deadline werden zuerst behandelt. \n" + 
         "Rate-Monotonic-Scheduling" + 
-        "\t - Prozesse mit der höchsten Periode werden zuerst behandelt. \n" # Scheduling Strategien in Echtzeit Systemen
-    
+        "\t - Prozesse mit der höchsten Periode werden zuerst behandelt. \n", # Scheduling Strategien in Echtzeit Systemen
+    "Short-term-Scheduler: \n" +
+        "Preeptive vs Non-Preemptive \n" +
+        "Auswahl von geeigneten Prozessen \n" +
+        "Dispatcher ist Teil des Short-term-Schedulers \n" +
+        "Medium-term-Scheduler: \n" +
+        "Entscheidet, ob ein Porzess in denn Speicher geladen werden soll. \n" +
+        "Teil des Swapping \n" +
+        "Long-term-Scheduler: \n" +
+        "Ziel: guten Prozessmix erzielen d.H. Mischung aus I/O intensivenn unnd rechenintensiveen Prozessen" +
+        "Der LTS wird aufgerufen wenn ein neuer Prozess erzeugt wird. \n", # Multi-Level-Scheduling
+    "Time Sharing: \n" +
+        "- Abwechselnde Nutzung von Ressouce \n" +
+        "- Langsamer Vorschritt für abhängige Prozesse \n" +
+        "Space Sharing: \n" +
+        "- Erlaubt abhängige Prozesse auf die gleichen Ressourcen zuzugreifen \n" +
+        "- Abhängige Prozesse können gleichzeitig ausgeführt werden \n" +
+        "- Vorteil: Keinen Kontextwechsel während deer Laufzeit \n" +
+        "- Nachteil: mitunter hohe Wartezeiten" + 
+        "Gang Scheduling: \n" +
+        "- Kombination von Time- und Space Sharing \n" +
+        "- Prozesse werden in Gruppen (Gangs) zusammengefasst \n" +
+        "- Prozesse in einer Gang können gleichzeitig ausgeführt werden \n" +
+        "- Gangs bekommmen Zeitscheiben zugewiesen \n" # Multi-Programmierung
+    "Vorteile: \n" +
+        "- Gute CPU-Auslastung \n" +
+        "- Fair für Alle Prozesse \n" +
+        "Nachteile: \n" +
+        "- Schlechte Skalierbarkeit \n" +
+        "- Schlechte Cache Lokalität \n", #Globale Warteschlangen
+    "Vorteile: \n" +
+        "- Gute Skalierbarkeit \n" +
+        "- Gute Cache Lokalität \n" +
+        "- Einfach zu implementieren \n" +
+        "Nachteile: \n" +
+        "- Schlechte CPU-Auslastung \n", # Lokale Warteschlangen
+    "Vorteile: \n" +
+        "- Gute Auslastung \n" +
+        "- Prozessoraffinität erlaubt Wiederverwendung von Cache \n" +
+        "Nachteile: \n" +
+        "- Komplex \n", # Hybrid Warteschlangen
 ]
 
 
