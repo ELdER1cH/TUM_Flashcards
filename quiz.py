@@ -44,7 +44,7 @@ while(not valid_stacks.__contains__(inp)):
     elif(inp == "GBS"):
         questions  = gbs_cards.questions
         answers = gbs_cards.answers
-        print("\nYou have selected the GBS deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("\nYou have selected the GBS [GERMAN] deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
         print("There are:",len(questions), "questions in this deck\n")
     elif(inp == "q"):
         break

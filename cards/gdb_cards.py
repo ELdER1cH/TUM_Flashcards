@@ -247,4 +247,3 @@ SQL_Answers = [
                 "WHERE tv.nachf = v1.vorlnr AND tv.vorg = v2.vorlnr AND v1.titel = 'Der Wiener Kreis AND vorg = v2.vorlnr'\n"
                 "ORDER BY (Vorg, Nachf) asc\n" #Recursive Queries
 ]
-
