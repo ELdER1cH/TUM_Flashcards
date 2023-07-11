@@ -3,6 +3,8 @@ import collections
 import cards.gdb_cards as gdb_cards
 import cards.itsec_cards as itsec_cards
 import cards.gbs_cards as gbs_cards
+import cards.theo_cards as theo_cards
+import cards.grnvs_cards as grnvs_cards
 
 
 #Used Variables
@@ -15,7 +17,9 @@ valid_stacks = [
 "GBS",
 "ITSEC",
 "GDB",
-"SQL"
+"SQL",
+"NET", #GRNVS -> NETworks ...
+"THEO"
 ]
 
 print("Type 'list' to see a list of available cards / input")
@@ -29,12 +33,12 @@ while(not valid_stacks.__contains__(inp)):
     elif (inp == "GDB"):
         questions = gdb_cards.questions
         answers = gdb_cards.answers
-        print("\nYou have selected the gdb deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("\nYou have selected the GDB deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
         print("There are ",len(questions), "questions in this deck\n")
     elif (inp == "ITSEC"):
         questions = itsec_cards.questions
         answers = itsec_cards.answers
-        print("\nYou have selected the itsec deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("\nYou have selected the ITSEC deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
         print("There are:",len(questions), "questions in this deck\n")
     elif(inp == "SQL"):
         questions = gdb_cards.SQL_Questions
@@ -45,6 +49,16 @@ while(not valid_stacks.__contains__(inp)):
         questions  = gbs_cards.questions
         answers = gbs_cards.answers
         print("\nYou have selected the GBS [GERMAN] deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are:",len(questions), "questions in this deck\n")
+    elif(inp == "NET"):
+        questions  = grnvs_cards.questions
+        answers = grnvs_cards.answers
+        print("\nYou have selected the GRNVS deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
+        print("There are:",len(questions), "questions in this deck\n")
+    elif(inp == "THEO"):
+        questions  = theo_cards.questions
+        answers = theo_cards.answers
+        print("\nYou have selected the THEO deck. Press ENTER to start the quiz. Press \"q\" to exit at any time")
         print("There are:",len(questions), "questions in this deck\n")
     elif(inp == "q"):
         break

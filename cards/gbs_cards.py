@@ -63,6 +63,9 @@ questions = [
 "Programme vs Prozesse",
 "Prozesse: Essentials",
 "Betriebssystem-Modi",
+"Betriebssystem-Architeturen",
+"Prozesskontext",
+
     
 ]
 
@@ -84,6 +87,11 @@ Echtzeitbetrieb:\t Hard und soft deadlines\n""", #"Betriebsarten",
 """- Braucht Ressourcen\n- Besitzt Prozessadressraum (Code und Daten)\n-> System: Menge von Prozessen""", #"Prozesse: Essentials"
 """User Mode:\t Anwendungen haben:\n\t\t\t... keinen direkten Hardware-Zugriff, kein Recht auf privilegierte Befehle usw.
 \t\t\t... nur Zugriff auf virtuelle Adressen\nKernel Mode:\t Anwendungen können privilegierte Befehle verwenden""", #"Betriebssystem-Modi",
+"""Monolithic Systems (z.B. Linux):\n\t- BS ist ein großes Programm\n\t- BS läuft vollständig im Kernel Mode
+Microkernel Systems:\n\tBS besteht aus vielen kleinen Modulen\n\tNur der Mikrokern läuft im Kernel Mode""", #"Betriebssystem-Architeturen",
+"""Charakterisiert Prozess, enthält Informationen für:\n\t... Prozessverwaltung: \tz.B. Registerinhalte, Zustand, IDs...
+\t... Speicherverwaltung: \tPointer auf Segmente und deren Größe\n\t... Dateiverwaltung""", #"Prozesskontext",
+
 
 
 ]

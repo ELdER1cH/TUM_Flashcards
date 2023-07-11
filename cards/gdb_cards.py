@@ -1,4 +1,5 @@
-questions = ["SQL",
+questions = [
+"SQL",
 "Primärschlüssel",
 "Fremdschlüssel",
 "(min, max)-Notation",
